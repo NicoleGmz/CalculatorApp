@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.example.calculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), MainView {
@@ -73,13 +74,70 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     private fun setListeners(){
+
         button0.setOnClickListener {
             presenter.showNumber(button0.text.toString())
         }
+
         button1.setOnClickListener {
             presenter.showNumber(button1.text.toString())
         }
 
+        button2.setOnClickListener {
+            presenter.showNumber(button2.text.toString())
+        }
+
+        button3.setOnClickListener {
+            presenter.showNumber(button3.text.toString())
+        }
+
+        button4.setOnClickListener {
+            presenter.showNumber(button4.text.toString())
+        }
+
+        button5.setOnClickListener {
+            presenter.showNumber(button5.text.toString())
+        }
+
+        button6.setOnClickListener {
+            presenter.showNumber(button6.text.toString())
+        }
+
+        button7.setOnClickListener {
+            presenter.showNumber(button7.text.toString())
+        }
+
+        button8.setOnClickListener {
+            presenter.showNumber(button8.text.toString())
+        }
+
+        button9.setOnClickListener {
+            presenter.showNumber(button9.text.toString())
+        }
+
+        buttonPlus.setOnClickListener {
+            presenter.showOperator(buttonPlus.text.toString())
+        }
+
+        buttonSub.setOnClickListener {
+            presenter.showOperator(buttonSub.text.toString())
+        }
+
+        buttonMul.setOnClickListener {
+            presenter.showOperator(buttonMul.text.toString())
+        }
+
+        buttonDiv.setOnClickListener {
+            presenter.showOperator(buttonDiv.text.toString())
+        }
+
+        buttonDot.setOnClickListener {
+            presenter.showNumber(buttonDot.text.toString())
+        }
+
+        buttonEqual.setOnClickListener {
+            presenter.operationResult()
+        }
         buttonDel.setOnClickListener {
             presenter.deleteLast(operationView.text.length)
         }
@@ -101,5 +159,9 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun displayOperations(s: String) {
         operationView.text = operationView.text.toString().plus(s)
+    }
+
+    override fun showError(s: String) {
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
     }
 }
