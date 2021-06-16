@@ -6,6 +6,8 @@ class MainPresenter(private val view: MainView, private val useCase: MainUseCase
         val result = useCase.operationResult()
         if(!result.result){
             view.showError(result.error)
+        }else{
+            view.displayResult(result.value)
         }
     }
 
@@ -41,6 +43,8 @@ class MainPresenter(private val view: MainView, private val useCase: MainUseCase
     }
 
     fun globalClear(){
+        useCase.clearDisplay()
         view.clearDisplay()
     }
+
 }

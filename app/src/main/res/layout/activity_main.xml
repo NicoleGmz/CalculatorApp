@@ -295,7 +295,7 @@
                 app:cornerRadius="0dp" />
 
             <Button
-                android:id="@+id/Button_plus"
+                android:id="@+id/Button_Add"
                 style="?android:attr/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -303,7 +303,7 @@
                 android:backgroundTint="@color/operators"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                android:text="@string/button_value_plus"
+                android:text="@string/button_value_add"
                 app:cornerRadius="0dp" />
         </TableRow>
     </TableLayout>

@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), MainView {
     lateinit var  button9: Button
 
     lateinit var  buttonEqual: Button
-    lateinit var  buttonPlus: Button
+    lateinit var  buttonAdd: Button
     lateinit var  buttonSub: Button
     lateinit var  buttonMul: Button
     lateinit var  buttonDiv: Button
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity(), MainView {
         button9 = binding.Button9
 
         buttonEqual = binding.ButtonEqual
-        buttonPlus = binding.ButtonPlus
+        buttonAdd = binding.ButtonAdd
         buttonSub = binding.ButtonSub
         buttonMul = binding.ButtonMul
         buttonDiv = binding.ButtonDiv
@@ -115,8 +115,8 @@ class MainActivity : AppCompatActivity(), MainView {
             presenter.showNumber(button9.text.toString())
         }
 
-        buttonPlus.setOnClickListener {
-            presenter.showOperator(buttonPlus.text.toString())
+        buttonAdd.setOnClickListener {
+            presenter.showOperator(buttonAdd.text.toString())
         }
 
         buttonSub.setOnClickListener {
@@ -166,5 +166,10 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun showError(s: String) {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun displayResult(i: Int) {
+        historyView.text = operationView.text
+        operationView.text = i.toString()
     }
 }

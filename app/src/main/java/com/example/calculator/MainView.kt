@@ -6,4 +6,6 @@ interface MainView {
     fun deleteLast()
     fun clearDisplay()
     fun showError(s: String)
+    fun displayResult(i: Int)
+
 }

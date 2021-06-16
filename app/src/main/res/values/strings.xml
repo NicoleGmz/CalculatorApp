@@ -17,7 +17,7 @@
     <string name="button_value_sub">-</string>
     <string name="button_value_div">/</string>
     <string name="button_value_mul">*</string>
-    <string name="button_value_plus">+</string>
+    <string name="button_value_add">+</string>
     <string name="button_value_equal">=</string>
     <string name="button_value_C">C</string>
     <string name="button_value_right_bracket">)</string>
