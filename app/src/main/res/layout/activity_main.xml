@@ -41,6 +41,65 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
+            android:id="@+id/Button_left_bracket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/operators"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_left_bracket"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
+
+        <Button
+            android:id="@+id/Button_right_bracket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/operators"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_right_bracket"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
+
+        <Button
+            android:id="@+id/Button_C"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/operators"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_C"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
+
+        <Button
+            android:id="@+id/Button_del"
+            style="?android:attr/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/operators"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:cornerRadius="0dp"
+            app:icon="@drawable/ic_baseline_backspace_24"
+            app:iconGravity="textEnd"
+            app:iconPadding="0dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/row_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <Button
             android:id="@+id/Button_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -90,12 +149,14 @@
     </LinearLayout>
 
 
+
+
     <LinearLayout
-        android:id="@+id/row_2"
+        android:id="@+id/row_3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/row_3"
+        app:layout_constraintBottom_toTopOf="@+id/row_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -149,11 +210,11 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/row_3"
+        android:id="@+id/row_4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/row_4"
+        app:layout_constraintBottom_toTopOf="@+id/row_5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -207,7 +268,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/row_4"
+        android:id="@+id/row_5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

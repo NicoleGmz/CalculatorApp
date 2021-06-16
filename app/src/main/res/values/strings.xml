@@ -19,4 +19,7 @@
     <string name="button_value_mul">*</string>
     <string name="button_value_plus">+</string>
     <string name="button_value_equal">=</string>
+    <string name="button_value_C">C</string>
+    <string name="button_value_right_bracket">)</string>
+    <string name="button_value_left_bracket">(</string>
 </resources>
