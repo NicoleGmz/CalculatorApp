@@ -6,196 +6,263 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TableLayout
+    <TextView
+        android:id="@+id/History"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbarSize="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/background"
+        android:textAlignment="viewEnd"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/background"
+        android:textAlignment="textEnd"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/row_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/row_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/row_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <Button
+            android:id="@+id/Button_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/numbers"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_1"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp">
+        <Button
+            android:id="@+id/Button_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/numbers"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_2"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
+        <Button
+            android:id="@+id/Button_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/numbers"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_3"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="409dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginRight="0dp"
-                    android:text="TextView" />
-            </LinearLayout>
-        </TableRow>
+        <Button
+            android:id="@+id/Button_div"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/operators"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_div"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
+    </LinearLayout>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+    <LinearLayout
+        android:id="@+id/row_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/row_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-                <Button
-                    android:id="@+id/button4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+        <Button
+            android:id="@+id/Button_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/numbers"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_4"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
 
-                <Button
-                    android:id="@+id/button5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+        <Button
+            android:id="@+id/Button_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/numbers"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_5"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
 
-                <Button
-                    android:id="@+id/button6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+        <Button
+            android:id="@+id/Button_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/numbers"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_6"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
 
-                <Button
-                    android:id="@+id/button7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-            </LinearLayout>
-        </TableRow>
+        <Button
+            android:id="@+id/Button_mul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/operators"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_mul"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
+    </LinearLayout>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/row_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/row_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+        <Button
+            android:id="@+id/Button_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/numbers"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_7"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
 
-                <Button
-                    android:id="@+id/button8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+        <Button
+            android:id="@+id/Button_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/numbers"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_8"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
 
-                <Button
-                    android:id="@+id/button9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+        <Button
+            android:id="@+id/Button_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/numbers"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_9"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
 
-                <Button
-                    android:id="@+id/button10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+        <Button
+            android:id="@+id/Button_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/operators"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_sub"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
+    </LinearLayout>
 
-                <Button
-                    android:id="@+id/button11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-            </LinearLayout>
-        </TableRow>
+    <LinearLayout
+        android:id="@+id/row_4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <Button
+            android:id="@+id/Button_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/operators"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_dot"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+        <Button
+            android:id="@+id/Button_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/numbers"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_0"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
 
-                <Button
-                    android:id="@+id/button12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+        <Button
+            android:id="@+id/Button_equal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/operators"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_equal"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
 
-                <Button
-                    android:id="@+id/button13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+        <Button
+            android:id="@+id/Button_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/operators"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/button_value_plus"
+            app:cornerRadius="0dp"
+            style="?android:attr/button" />
+    </LinearLayout>
 
-                <Button
-                    android:id="@+id/button14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-
-                <Button
-                    android:id="@+id/button15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-            </LinearLayout>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/button16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-
-                <Button
-                    android:id="@+id/button17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-
-                <Button
-                    android:id="@+id/button18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-
-                <Button
-                    android:id="@+id/button19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-            </LinearLayout>
-        </TableRow>
-    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

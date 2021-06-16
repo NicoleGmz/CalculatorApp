@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">CalculatorApp</string>
+    <!-- Number Buttons -->
+    <string name="button_value_1">1</string>
+    <string name="button_value_2">2</string>
+    <string name="button_value_3">3</string>
+    <string name="button_value_4">4</string>
+    <string name="button_value_5">5</string>
+    <string name="button_value_6">6</string>
+    <string name="button_value_7">7</string>
+    <string name="button_value_8">8</string>
+    <string name="button_value_9">9</string>
+    <string name="button_value_0">0</string>
+
+    <!-- Operator Buttons -->
+    <string name="button_value_dot">.</string>
+    <string name="button_value_sub">-</string>
+    <string name="button_value_div">/</string>
+    <string name="button_value_mul">*</string>
+    <string name="button_value_plus">+</string>
+    <string name="button_value_equal">=</string>
 </resources>
