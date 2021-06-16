@@ -5,12 +5,26 @@ import java.lang.Double.parseDouble
 class MainRepository {
     private var operation: String = ""
 
-    fun saveCurrentOperation(s:String){
-        operation = operation.plus(s)
+    fun saveCurrentOperation(s:String):OperationResult{
+        return if(s == "0" && operation.split(" ").last() == "0"){
+            OperationResult(0, false, "")
+        }else{
+            operation = operation.plus(s)
+            OperationResult(0, true, "")
+        }
+    }
+
+    fun verifyDots(s: String): OperationResult {
+        return if (operation.split(" ").last().contains(".")){
+            OperationResult(0, false, "Already a dot in this number")
+        }else{
+            operation = operation.plus(s)
+            OperationResult(0, true, "")
+        }
     }
 
     fun deleteLast() {
-        operation.dropLast(1)
+        operation = operation.dropLast(1)
     }
 
     fun operationResult(): OperationResult{
@@ -35,10 +49,10 @@ class MainRepository {
         return result
     }
 
-    fun verifyIfNumeric(value:String): Boolean{
+    private fun verifyIfNumeric(value:String): Boolean{
         var numeric = true
         try {
-            val num = parseDouble(value)
+            parseDouble(value)
         } catch (e: NumberFormatException) {
             numeric = false
         }

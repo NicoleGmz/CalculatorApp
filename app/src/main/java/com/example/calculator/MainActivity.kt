@@ -132,12 +132,13 @@ class MainActivity : AppCompatActivity(), MainView {
         }
 
         buttonDot.setOnClickListener {
-            presenter.showNumber(buttonDot.text.toString())
+            presenter.showDot(buttonDot.text.toString())
         }
 
         buttonEqual.setOnClickListener {
             presenter.operationResult()
         }
+
         buttonDel.setOnClickListener {
             presenter.deleteLast(operationView.text.length)
         }
@@ -145,6 +146,7 @@ class MainActivity : AppCompatActivity(), MainView {
         buttonC.setOnClickListener {
             presenter.globalClear()
         }
+
     }
 
     override fun clearDisplay() {
@@ -155,6 +157,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun deleteLast() {
         operationView.text = operationView.text.dropLast(1)
+
     }
 
     override fun displayOperations(s: String) {
