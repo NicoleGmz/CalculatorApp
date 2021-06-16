@@ -1,5 +1,8 @@
 package com.example.calculator
 
 interface MainView {
-    fun displayNumber(s: String)
+
+    fun displayOperations(s: String)
+    fun deleteLast()
+    fun clearDisplay()
 }

@@ -3,6 +3,7 @@ package com.example.calculator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import com.example.calculator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), MainView {
@@ -24,7 +25,13 @@ class MainActivity : AppCompatActivity(), MainView {
     lateinit var  buttonMul: Button
     lateinit var  buttonDiv: Button
     lateinit var  buttonDot: Button
+    lateinit var  buttonRBracket: Button
+    lateinit var  buttonLBracket: Button
+    lateinit var  buttonDel: Button
+    lateinit var  buttonC: Button
 
+    lateinit var historyView: TextView
+    lateinit var operationView: TextView
     lateinit var presenter: MainPresenter
 
     lateinit var binding: ActivityMainBinding
@@ -34,7 +41,7 @@ class MainActivity : AppCompatActivity(), MainView {
         val view = binding.root
         setContentView(view)
 
-        presenter = MainPresenter(this)
+        presenter = MainPresenter(this, MainUseCase(MainRepository()))
 
         button0 = binding.Button0
         button1 = binding.Button1
@@ -53,15 +60,46 @@ class MainActivity : AppCompatActivity(), MainView {
         buttonMul = binding.ButtonMul
         buttonDiv = binding.ButtonDiv
         buttonDot = binding.ButtonDot
+        buttonRBracket = binding.ButtonRightBracket
+        buttonLBracket = binding.ButtonLeftBracket
+        buttonDel = binding.ButtonDel
+        buttonC = binding.ButtonC
+
+        historyView = binding.HistoryTextView
+        operationView = binding.OperationTextView
+        operationView.hint = 0.toString()
+
+        setListeners()
     }
 
-    fun setListeners(){
+    private fun setListeners(){
         button0.setOnClickListener {
             presenter.showNumber(button0.text.toString())
         }
+        button1.setOnClickListener {
+            presenter.showNumber(button1.text.toString())
+        }
+
+        buttonDel.setOnClickListener {
+            presenter.deleteLast(operationView.text.length)
+        }
+
+        buttonC.setOnClickListener {
+            presenter.globalClear()
+        }
     }
 
-    override fun displayNumber(s: String) {
-        TODO("Not yet implemented")
+    override fun clearDisplay() {
+        historyView.text = ""
+        operationView.text = ""
+        operationView.hint = 0.toString()
+    }
+
+    override fun deleteLast() {
+        operationView.text = operationView.text.dropLast(1)
+    }
+
+    override fun displayOperations(s: String) {
+        operationView.text = operationView.text.toString().plus(s)
     }
 }
