@@ -58,17 +58,26 @@ class MainRepository {
     }
 
     private fun doOperation(values:List<String>): OperationResult {
-        val iter = 0
-        val firstNumber = values[iter]
-        val operator = values[iter+1]
-        val secondNumber = values[iter+2]
+        var iter = 0
         var result = 0
-        when(operator){
-            "+" -> result = addNumbers(firstNumber, secondNumber).roundToInt()
-            "-" -> result = subtractNumbers(firstNumber, secondNumber).roundToInt()
-            "*" -> result = multiplyNumbers(firstNumber, secondNumber).roundToInt()
-            "/" -> result = divideNumbers(firstNumber, secondNumber).roundToInt()
+        while(iter < values.size-1){
+            val firstNumber = if (iter == 0) {
+                values[iter]
+            }else{
+                result.toString()
+            }
+            val operator = values[iter+1]
+            val secondNumber = values[iter+2]
+            when(operator){
+                "+" -> result = addNumbers(firstNumber, secondNumber).roundToInt()
+                "-" -> result = subtractNumbers(firstNumber, secondNumber).roundToInt()
+                "*" -> result = multiplyNumbers(firstNumber, secondNumber).roundToInt()
+                "/" -> result = divideNumbers(firstNumber, secondNumber).roundToInt()
+            }
+
+            iter += 2
         }
+
         return OperationResult(result, true, "")
     }
 
