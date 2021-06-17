@@ -1,4 +1,4 @@
-package com.example.calculator
+package com.example.calculator.domain.model
 
 data class OperationResult(
     val value: Int,

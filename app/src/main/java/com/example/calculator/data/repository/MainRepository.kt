@@ -1,5 +1,6 @@
-package com.example.calculator
+package com.example.calculator.data.repository
 
+import com.example.calculator.domain.model.OperationResult
 import java.lang.Double.parseDouble
 import kotlin.math.roundToInt
 
@@ -14,7 +15,7 @@ class MainRepository {
         operation = ""
     }
 
-    fun saveCurrentOperation(s:String):OperationResult{
+    fun saveCurrentOperation(s:String): OperationResult {
         return if(s == "0" && operation.split(" ").last() == "0"){
             OperationResult(0, false, "")
         }else{
@@ -32,7 +33,7 @@ class MainRepository {
         }
     }
 
-    fun operationResult(): OperationResult{
+    fun operationResult(): OperationResult {
 
         lateinit var result: OperationResult
 
@@ -56,8 +57,7 @@ class MainRepository {
         return result
     }
 
-    private fun doOperation(values:List<String>): OperationResult{
-
+    private fun doOperation(values:List<String>): OperationResult {
         val iter = 0
         val firstNumber = values[iter]
         val operator = values[iter+1]

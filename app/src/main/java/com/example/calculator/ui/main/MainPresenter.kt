@@ -1,4 +1,7 @@
-package com.example.calculator
+package com.example.calculator.ui.main
+
+import com.example.calculator.datainterface.MainView
+import com.example.calculator.domain.usecase.MainUseCase
 
 class MainPresenter(private val view: MainView, private val useCase: MainUseCase){
 

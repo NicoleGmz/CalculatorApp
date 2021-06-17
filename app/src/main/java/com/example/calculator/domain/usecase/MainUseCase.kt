@@ -1,4 +1,6 @@
-package com.example.calculator
+package com.example.calculator.domain.usecase
+
+import com.example.calculator.data.repository.MainRepository
 
 class MainUseCase (private val mainRepository: MainRepository){
 
