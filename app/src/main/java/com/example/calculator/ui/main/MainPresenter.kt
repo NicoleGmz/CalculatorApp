@@ -20,10 +20,22 @@ class MainPresenter(private val view: MainView, private val useCase: MainUseCase
         view.displayOperations(operator)
     }
 
-    fun showNumber(s: String) {
-        val result = useCase.saveCurrentOperation(s)
-        if (result.result) {
-            view.displayOperations(s)
+    fun showNumber(s: String, textview: String) {
+        if(textview == ""){
+            val result = useCase.saveCurrentOperation(s)
+            if (result.result) {
+                view.displayOperations(s)
+            }
+        }else{
+            if(useCase.verifyIsResult()){
+                useCase.saveCurrentOperation(s)
+                view.updateHistory(textview, s)
+            }else{
+                val result = useCase.saveCurrentOperation(s)
+                if (result.result) {
+                    view.displayOperations(s)
+                }
+            }
         }
     }
 

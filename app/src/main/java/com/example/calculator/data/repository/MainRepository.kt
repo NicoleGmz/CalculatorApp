@@ -2,34 +2,39 @@ package com.example.calculator.data.repository
 
 import com.example.calculator.domain.model.OperationResult
 import java.lang.Double.parseDouble
-import kotlin.math.roundToInt
 
 class MainRepository {
     private var operation: String = ""
+
+    private var history: ArrayList<String> = arrayListOf()
+
+    private var isResult: Boolean = false
 
     fun deleteLast() {
         operation = operation.dropLast(1)
     }
     
     fun clearDisplay(){
+        history.drop(history.size)
         operation = ""
     }
 
     fun saveCurrentOperation(s:String): OperationResult {
+        isResult = false
         return if(s == "0" && operation.split(" ").last() == "0"){
-            OperationResult(0, false, "")
+            OperationResult(0.0, false, "")
         }else{
             operation = operation.plus(s)
-            OperationResult(0, true, "")
+            OperationResult(0.0, true, "")
         }
     }
 
     fun verifyDots(s: String): OperationResult {
         return if (operation.split(" ").last().contains(".")){
-            OperationResult(0, false, "Already a dot in this number")
+            OperationResult(0.0, false, "Already a dot in this number")
         }else{
             operation = operation.plus(s)
-            OperationResult(0, true, "")
+            OperationResult(0.0, true, "")
         }
     }
 
@@ -43,15 +48,16 @@ class MainRepository {
             listValues.forEach { it.trim() }
             val lastValue = listValues.last()
             if(!verifyIfNumeric(lastValue)){
-                OperationResult(0,false, "Need a number at the end")
+                OperationResult(0.0,false, "Need a number at the end")
             }else{
+
                 doOperation(listValues)
             }
         }else{
             if (listValues.size == 1){
-                OperationResult(0,false, "An operator and a second number is needed")
+                OperationResult(0.0,false, "An operator and a second number is needed")
             }else{
-                OperationResult(0,false, "Insert numbers to operate")
+                OperationResult(0.0,false, "Insert numbers to operate")
             }
         }
         return result
@@ -59,7 +65,7 @@ class MainRepository {
 
     private fun doOperation(values:List<String>): OperationResult {
         var iter = 0
-        var result = 0
+        var result = 0.0
         while(iter < values.size-1){
             val firstNumber = if (iter == 0) {
                 values[iter]
@@ -69,15 +75,18 @@ class MainRepository {
             val operator = values[iter+1]
             val secondNumber = values[iter+2]
             when(operator){
-                "+" -> result = addNumbers(firstNumber, secondNumber).roundToInt()
-                "-" -> result = subtractNumbers(firstNumber, secondNumber).roundToInt()
-                "*" -> result = multiplyNumbers(firstNumber, secondNumber).roundToInt()
-                "/" -> result = divideNumbers(firstNumber, secondNumber).roundToInt()
+                "+" -> result = addNumbers(firstNumber, secondNumber)
+                "-" -> result = subtractNumbers(firstNumber, secondNumber)
+                "*" -> result = multiplyNumbers(firstNumber, secondNumber)
+                "/" -> result = divideNumbers(firstNumber, secondNumber)
             }
 
             iter += 2
         }
 
+        history.plus(operation)
+        history.plus(result.toString())
+        isResult = true
         return OperationResult(result, true, "")
     }
 
@@ -105,6 +114,10 @@ class MainRepository {
             numeric = false
         }
         return numeric
+    }
+
+    fun verifyIsResult(): Boolean {
+        return isResult
     }
 
 }

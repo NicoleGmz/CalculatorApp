@@ -9,4 +9,5 @@ class MainUseCase (private val mainRepository: MainRepository){
     fun operationResult() = mainRepository.operationResult()
     fun verifyDots(s: String) = mainRepository.verifyDots(s)
     fun clearDisplay() = mainRepository.clearDisplay()
+    fun verifyIsResult() = mainRepository.verifyIsResult()
 }
