@@ -6,7 +6,8 @@ import java.lang.Double.parseDouble
 class MainRepository {
     private var operation: String = ""
 
-    private var history: ArrayList<String> = arrayListOf()
+    private var historyOperations: ArrayList<String> = arrayListOf()
+    private var historyResults: ArrayList<String> = arrayListOf()
 
     private var isResult: Boolean = false
 
@@ -15,11 +16,15 @@ class MainRepository {
     }
     
     fun clearDisplay(){
-        history.drop(history.size)
+        historyOperations.drop(historyOperations.size)
+        historyResults.drop(historyResults.size)
         operation = ""
     }
 
     fun saveCurrentOperation(s:String): OperationResult {
+        if(isResult){
+            operation = historyResults.last()
+        }
         isResult = false
         return if(s == "0" && operation.split(" ").last() == "0"){
             OperationResult(0.0, false, "")
@@ -84,8 +89,8 @@ class MainRepository {
             iter += 2
         }
 
-        history.plus(operation)
-        history.plus(result.toString())
+        historyOperations.add(operation)
+        historyResults.add("$result")
         isResult = true
         return OperationResult(result, true, "")
     }
