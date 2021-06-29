@@ -2,6 +2,7 @@ package com.example.calculator.data.repository
 
 import com.example.calculator.domain.model.OperationResult
 import java.lang.Double.parseDouble
+import kotlin.math.round
 
 class MainRepository {
     private var operation: String = ""
@@ -22,10 +23,15 @@ class MainRepository {
     }
 
     fun saveCurrentOperation(s:String): OperationResult {
-        if(isResult){
+
+        if(isResult && !verifyIfNumeric(s)){
             operation = historyResults.last()
+        }else if(isResult && verifyIfNumeric(s)){
+            operation = ""
         }
+
         isResult = false
+        
         return if(s == "0" && operation.split(" ").last() == "0"){
             OperationResult(0.0, false, "")
         }else{
@@ -55,7 +61,6 @@ class MainRepository {
             if(!verifyIfNumeric(lastValue)){
                 OperationResult(0.0,false, "Need a number at the end")
             }else{
-
                 doOperation(listValues)
             }
         }else{
@@ -66,6 +71,10 @@ class MainRepository {
             }
         }
         return result
+    }
+
+    fun verifyIsResult(): Boolean {
+        return isResult
     }
 
     private fun doOperation(values:List<String>): OperationResult {
@@ -89,6 +98,7 @@ class MainRepository {
             iter += 2
         }
 
+        result = result.round(3)
         historyOperations.add(operation)
         historyResults.add("$result")
         isResult = true
@@ -121,8 +131,10 @@ class MainRepository {
         return numeric
     }
 
-    fun verifyIsResult(): Boolean {
-        return isResult
+    private fun Double.round(decimals: Int): Double {
+        var multiplier = 1.0
+        repeat(decimals) { multiplier *= 10 }
+        return round(this * multiplier) / multiplier
     }
 
 }
