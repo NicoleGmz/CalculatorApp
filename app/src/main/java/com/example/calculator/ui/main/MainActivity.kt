@@ -134,6 +134,14 @@ class MainActivity : AppCompatActivity(), MainView {
             presenter.showOperator(buttonDiv.text.toString())
         }
 
+        buttonRBracket.setOnClickListener {
+            presenter.showBrackets(buttonRBracket.text.toString())
+        }
+
+        buttonLBracket.setOnClickListener {
+            presenter.showBrackets(buttonLBracket.text.toString())
+        }
+
         buttonDot.setOnClickListener {
             presenter.showDot(buttonDot.text.toString())
         }

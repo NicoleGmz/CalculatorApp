@@ -20,6 +20,24 @@ class MainPresenter(private val view: MainView, private val useCase: MainUseCase
         view.displayOperations(operator)
     }
 
+    fun showBrackets(s:String){
+        val bracket = if(s == "("){
+            "$s "
+        }else{
+            " $s"
+        }
+
+        if(useCase.verifyIsResult()){
+            val result = useCase.saveCurrentOperation(bracket)
+            if(result.result){
+                view.clearDisplay()
+            }
+        }else{
+            useCase.saveCurrentOperation(bracket)
+        }
+        view.displayOperations(bracket)
+    }
+
     fun showNumber(s: String, textview: String) {
         if(textview == ""){
             val result = useCase.saveCurrentOperation(s)

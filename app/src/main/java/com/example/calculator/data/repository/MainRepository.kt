@@ -11,6 +11,7 @@ class MainRepository {
     private var historyResults: ArrayList<String> = arrayListOf()
 
     private var isResult: Boolean = false
+    private var pattern = """((\d+\.?\d*)\s)?((([+*/\-])\s)?\(\s(\d+\.?\d*)(\s([+*/\-])\s(\d+\.?\d*))+\s\)\s?)?(([+*/\-])\s(\d+\.?\d*)\s?)?""".toRegex()
 
     fun deleteLast() {
         operation = operation.dropLast(1)
@@ -20,18 +21,21 @@ class MainRepository {
         historyOperations.drop(historyOperations.size)
         historyResults.drop(historyResults.size)
         operation = ""
+        isResult = false
     }
 
     fun saveCurrentOperation(s:String): OperationResult {
 
-        if(isResult && !verifyIfNumeric(s)){
-            operation = historyResults.last()
-        }else if(isResult && verifyIfNumeric(s)){
-            operation = ""
+        if(isResult){
+            operation = if(verifyIfNumeric(s) || isBracket(s)){
+                ""
+            }else{
+                historyResults.last()
+            }
         }
 
         isResult = false
-        
+
         return if(s == "0" && operation.split(" ").last() == "0"){
             OperationResult(0.0, false, "")
         }else{
@@ -51,26 +55,23 @@ class MainRepository {
 
     fun operationResult(): OperationResult {
 
-        lateinit var result: OperationResult
-
+        operation = operation.trim()
         val listValues = operation.split(" ")
 
-        result = if(listValues.size > 1){
-            listValues.forEach { it.trim() }
-            val lastValue = listValues.last()
-            if(!verifyIfNumeric(lastValue)){
-                OperationResult(0.0,false, "Need a number at the end")
-            }else{
+        return if (listValues.size > 1) {
+            if (operation.matches(pattern)) {
+                listValues.forEach { it.trim() }
                 doOperation(listValues)
+            } else {
+                OperationResult(0.0, false, "Need a number at the end")
             }
-        }else{
-            if (listValues.size == 1){
-                OperationResult(0.0,false, "An operator and a second number is needed")
-            }else{
-                OperationResult(0.0,false, "Insert numbers to operate")
+        } else {
+            if (listValues.size == 1) {
+                OperationResult(0.0, false, "An operator and a second number is needed")
+            } else {
+                OperationResult(0.0, false, "Insert numbers to operate")
             }
         }
-        return result
     }
 
     fun verifyIsResult(): Boolean {
@@ -129,6 +130,10 @@ class MainRepository {
             numeric = false
         }
         return numeric
+    }
+
+    private fun isBracket(value:String):Boolean{
+        return value.contains("(") || value.contains(")")
     }
 
     private fun Double.round(decimals: Int): Double {
