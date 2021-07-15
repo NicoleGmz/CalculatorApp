@@ -13,7 +13,7 @@ class MainRepository {
     private var historyResults: ArrayList<String> = arrayListOf()
 
     private var isResult: Boolean = false
-    private var pattern = """((\d+\.?\d*)\s)?(([+*/-]\s)?\(\s(\d+\.?\d*)(\s[+*/-]\s(\d+\.?\d*))+\s\)\s?)?([+*/-]\s(\d+\.?\d*)\s?)?""".toRegex()
+    //private var pattern = """((\d+\.?\d*)\s)?(([+*/-]\s)?\(\s(\d+\.?\d*)(\s[+*/-]\s(\d+\.?\d*))+\s\)\s?)?([+*/-]\s(\d+\.?\d*)\s?)?""".toRegex()
 
     fun deleteLast() {
         operation = operation.dropLast(1)
@@ -29,11 +29,7 @@ class MainRepository {
     fun saveCurrentOperation(s:String): OperationResult {
 
         if(isResult){
-            operation = if(verifyIfNumeric(s) || isBracket(s)){
-                ""
-            }else{
-                historyResults.last()
-            }
+            operation = ""
         }
 
         isResult = false
@@ -44,6 +40,22 @@ class MainRepository {
             operation = operation.plus(s)
             OperationResult(0.0, true, "")
         }
+    }
+
+    fun saveOperator(s: String): OperationResult{
+        if(isResult){
+            operation = historyResults.last()
+        }
+
+        isResult = false
+
+        return if(operation.trim().split(" ").last().contains("""[+\-*/]""".toRegex())){
+            OperationResult(0.0,false, "You already have an operator")
+        }else{
+            operation = operation.plus(s)
+            OperationResult(0.0,true, "")
+        }
+
     }
 
     fun verifyDots(s: String): OperationResult {
@@ -61,13 +73,11 @@ class MainRepository {
         val listValues = operation.split(" ")
 
         return if (listValues.size > 1) {
-            if (operation.matches(pattern)) {
-                listValues.forEach { it.trim() }
-                val aux = getRPNFormat(listValues)
-                getRPNResult(aux)
-            } else {
-                OperationResult(0.0, false, "Error in the operation, repeat it")
-            }
+            listValues.forEach { it.trim() }
+            val aux = getRPNFormat(listValues)
+            historyOperations.add(operation)
+            getRPNResult(aux)
+
         } else {
             if (listValues.size == 1) {
                 OperationResult(0.0, false, "An operator and a second number is needed")
@@ -132,7 +142,10 @@ class MainRepository {
                 operationPile.addLast(result)
             }
         }
-        return OperationResult(operationPile.last().toDouble().round(3), true, "")
+        val result = operationPile.last().toDouble().round(3)
+        historyResults.add(result.toString())
+        isResult = true
+        return OperationResult(result, true, "")
     }
 
     private fun doOperation(firstNumber: String, secondNumber: String, operator: String): String{
@@ -170,10 +183,6 @@ class MainRepository {
             numeric = false
         }
         return numeric
-    }
-
-    private fun isBracket(value:String):Boolean{
-        return value.contains("(") || value.contains(")")
     }
 
     private fun Double.round(decimals: Int): Double {

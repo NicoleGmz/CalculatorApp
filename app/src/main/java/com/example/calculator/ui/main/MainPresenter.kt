@@ -16,8 +16,12 @@ class MainPresenter(private val view: MainView, private val useCase: MainUseCase
 
     fun showOperator(s: String){
         val operator = " $s "
-        useCase.saveCurrentOperation(operator)
-        view.displayOperations(operator)
+        val result = useCase.saveOperator(operator)
+        if(result.result){
+            view.displayOperations(operator)
+        }else{
+            view.showError(result.error)
+        }
     }
 
     fun showBrackets(s:String){

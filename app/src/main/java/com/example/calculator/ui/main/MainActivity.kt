@@ -12,33 +12,35 @@ import com.example.calculator.domain.usecase.MainUseCase
 
 class MainActivity : AppCompatActivity(), MainView {
 
-    lateinit var  button0: Button
-    lateinit var  button1: Button
-    lateinit var  button2: Button
-    lateinit var  button3: Button
-    lateinit var  button4: Button
-    lateinit var  button5: Button
-    lateinit var  button6: Button
-    lateinit var  button7: Button
-    lateinit var  button8: Button
-    lateinit var  button9: Button
+    private lateinit var  button0: Button
+    private lateinit var  button1: Button
+    private lateinit var  button2: Button
+    private lateinit var  button3: Button
+    private lateinit var  button4: Button
+    private lateinit var  button5: Button
+    private lateinit var  button6: Button
+    private lateinit var  button7: Button
+    private lateinit var  button8: Button
+    private lateinit var  button9: Button
 
-    lateinit var  buttonEqual: Button
-    lateinit var  buttonAdd: Button
-    lateinit var  buttonSub: Button
-    lateinit var  buttonMul: Button
-    lateinit var  buttonDiv: Button
-    lateinit var  buttonDot: Button
-    lateinit var  buttonRBracket: Button
-    lateinit var  buttonLBracket: Button
-    lateinit var  buttonDel: Button
-    lateinit var  buttonC: Button
+    private lateinit var  buttonEqual: Button
+    private lateinit var  buttonAdd: Button
+    private lateinit var  buttonSub: Button
+    private lateinit var  buttonMul: Button
+    private lateinit var  buttonDiv: Button
+    private lateinit var  buttonDot: Button
+    private lateinit var  buttonRBracket: Button
+    private lateinit var  buttonLBracket: Button
+    private lateinit var  buttonDel: Button
+    private lateinit var  buttonC: Button
 
-    lateinit var historyView: TextView
-    lateinit var operationView: TextView
-    lateinit var presenter: MainPresenter
+    private lateinit var historyView: TextView
+    private lateinit var operationView: TextView
+    private lateinit var presenter: MainPresenter
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -167,7 +169,7 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     override fun deleteLast() {
-        operationView.text = operationView.text.dropLast(1)
+        operationView.text = operationView.text.dropLast(2)
 
     }
 
