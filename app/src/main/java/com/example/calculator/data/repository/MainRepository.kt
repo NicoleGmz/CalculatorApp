@@ -20,8 +20,8 @@ class MainRepository {
     }
     
     fun clearDisplay(){
-        historyOperations.drop(historyOperations.size)
-        historyResults.drop(historyResults.size)
+        historyOperations.removeAll(historyOperations)
+        historyResults.removeAll(historyResults)
         operation = ""
         isResult = false
     }
