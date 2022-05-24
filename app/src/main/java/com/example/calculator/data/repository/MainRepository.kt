@@ -104,11 +104,14 @@ class MainRepository {
 
     fun getHistoryLog(): ArrayList<String> {
         val newSize = min(historyOperations.size, historyResults.size)
-        var i = 0
-        while(i < newSize){
-            historyLog.add(historyOperations[i])
-            historyLog.add(historyResults[i])
-            i++
+
+        if(2*newSize > historyLog.size){
+            var i = if(historyLog.size == 0) 0 else historyLog.size / 2
+            while(i < newSize){
+                historyLog.add(historyOperations[i])
+                historyLog.add(historyResults[i])
+                i++
+            }
         }
 
         return historyLog
