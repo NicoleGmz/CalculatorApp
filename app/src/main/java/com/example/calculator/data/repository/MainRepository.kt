@@ -4,6 +4,7 @@ import com.example.calculator.domain.model.OperationResult
 import java.lang.Double.parseDouble
 import kotlin.collections.ArrayDeque
 import kotlin.collections.ArrayList
+import kotlin.math.min
 import kotlin.math.round
 
 class MainRepository {
@@ -11,6 +12,8 @@ class MainRepository {
 
     private var historyOperations: ArrayList<String> = arrayListOf()
     private var historyResults: ArrayList<String> = arrayListOf()
+
+    private var historyLog: ArrayList<String> = arrayListOf()
 
     private var isResult: Boolean = false
     //private var pattern = """((\d+\.?\d*)\s)?(([+*/-]\s)?\(\s(\d+\.?\d*)(\s[+*/-]\s(\d+\.?\d*))+\s\)\s?)?([+*/-]\s(\d+\.?\d*)\s?)?""".toRegex()
@@ -20,8 +23,8 @@ class MainRepository {
     }
     
     fun clearDisplay(){
-        historyOperations.removeAll(historyOperations)
-        historyResults.removeAll(historyResults)
+        historyOperations.removeAll(historyOperations.toSet())
+        historyResults.removeAll(historyResults.toSet())
         operation = ""
         isResult = false
     }
@@ -89,6 +92,26 @@ class MainRepository {
 
     fun verifyIsResult(): Boolean {
         return isResult
+    }
+
+    fun getHistoryRow(position: Int): String{
+        return historyLog[position]
+    }
+
+    fun getItemCount(): Int {
+        return historyLog.count()
+    }
+
+    fun getHistoryLog(): ArrayList<String> {
+        val newSize = min(historyOperations.size, historyResults.size)
+        var i = 0
+        while(i < newSize){
+            historyLog.add(historyOperations[i])
+            historyLog.add(historyResults[i])
+            i++
+        }
+
+        return historyLog
     }
 
     private fun getRPNFormat(values: List<String>): ArrayDeque<String> {

@@ -5,6 +5,7 @@ import com.example.calculator.domain.usecase.MainUseCase
 
 class MainPresenter(private val view: MainView, private val useCase: MainUseCase){
 
+    var historyFlag = false
     fun operationResult(){
         val result = useCase.operationResult()
         if(!result.result){
@@ -84,4 +85,19 @@ class MainPresenter(private val view: MainView, private val useCase: MainUseCase
         view.clearDisplay()
     }
 
+    fun getItemCount(): Int  = useCase.getItemCount()
+
+    fun getHistoryRow(position: Int) = useCase.getHistoryRow(position)
+
+    fun displayHistory(){
+        historyFlag = if(historyFlag){
+            view.hideHistory()
+            false
+        }else{
+            useCase.getHistoryLog()
+            view.updateData()
+            view.displayHistory()
+            true
+        }
+    }
 }

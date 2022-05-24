@@ -3,8 +3,12 @@ package com.example.calculator.ui.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.calculator.R
 import com.example.calculator.data.repository.MainRepository
 import com.example.calculator.databinding.ActivityMainBinding
 import com.example.calculator.datainterface.MainView
@@ -34,9 +38,15 @@ class MainActivity : AppCompatActivity(), MainView {
     private lateinit var  buttonDel: Button
     private lateinit var  buttonC: Button
 
+    private lateinit var buttonHistory: ImageButton
+    private lateinit var historyText: TextView
+
     private lateinit var historyView: TextView
     private lateinit var operationView: TextView
     private lateinit var presenter: MainPresenter
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: HistoryAdapter
 
     private lateinit var binding: ActivityMainBinding
 
@@ -71,9 +81,17 @@ class MainActivity : AppCompatActivity(), MainView {
         buttonDel = binding.ButtonDel
         buttonC = binding.ButtonC
 
+        buttonHistory = binding.historyImageButton
+        historyText = binding.HistoryButton
         historyView = binding.HistoryTextView
         operationView = binding.OperationTextView
         operationView.hint = 0.toString()
+
+        adapter = HistoryAdapter(presenter)
+        recyclerView = binding.historyView
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.alpha = 0F
 
         setListeners()
     }
@@ -160,6 +178,14 @@ class MainActivity : AppCompatActivity(), MainView {
             presenter.globalClear()
         }
 
+        buttonHistory.setOnClickListener {
+            presenter.displayHistory()
+        }
+
+        historyText.setOnClickListener {
+            presenter.displayHistory()
+        }
+
     }
 
     override fun clearDisplay() {
@@ -190,4 +216,19 @@ class MainActivity : AppCompatActivity(), MainView {
         historyView.text = operationView.text
         operationView.text = result.toString()
     }
+
+    override fun displayHistory() {
+        recyclerView.alpha = 1F
+        buttonHistory.setImageResource(R.drawable.ic_baseline_keyboard_arrow_up_24)
+    }
+
+    override fun hideHistory(){
+        recyclerView.alpha = 0F
+        buttonHistory.setImageResource(R.drawable.ic_baseline_keyboard_arrow_down_24)
+    }
+
+    override fun updateData(){
+        adapter.updateData()
+    }
+
 }

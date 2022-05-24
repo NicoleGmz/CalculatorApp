@@ -22,4 +22,7 @@
     <string name="button_value_C">C</string>
     <string name="button_value_right_bracket">)</string>
     <string name="button_value_left_bracket">(</string>
+    <string name="history_button">History</string>
+    <string name="button_del">Delete</string>
+    <string name="history_text">Display History of Operations</string>
 </resources>

@@ -11,4 +11,7 @@ class MainUseCase (private val mainRepository: MainRepository){
     fun verifyDots(s: String) = mainRepository.verifyDots(s)
     fun clearDisplay() = mainRepository.clearDisplay()
     fun verifyIsResult() = mainRepository.verifyIsResult()
+    fun getItemCount(): Int  = mainRepository.getItemCount()
+    fun getHistoryRow(position: Int): String = mainRepository.getHistoryRow(position)
+    fun getHistoryLog(): ArrayList<String> = mainRepository.getHistoryLog()
 }

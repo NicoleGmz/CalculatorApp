@@ -86,6 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/operators"
+                android:contentDescription="@string/button_del"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 app:cornerRadius="0dp"
@@ -307,5 +308,54 @@
                 app:cornerRadius="0dp" />
         </TableRow>
     </TableLayout>
+
+    <TextView
+        android:id="@+id/HistoryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="8dp"
+        android:text="@string/history_button"
+        android:textColor="@color/numbers"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/historyImageButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:contentDescription="@string/history_button"
+        app:layout_constraintBottom_toBottomOf="@+id/HistoryButton"
+        app:layout_constraintEnd_toStartOf="@+id/HistoryButton"
+        app:layout_constraintTop_toTopOf="@+id/HistoryButton"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_down_24"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/historyView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:padding="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/HistoryTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HistoryButton" />
+
+    <!--Button
+        android:id="@+id/button"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/history_button"
+        app:icon="@drawable/ic_baseline_keyboard_arrow_down_24"
+        app:iconGravity="textEnd"
+        tools:layout_editor_absoluteX="273dp"
+        tools:layout_editor_absoluteY="16dp" /-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

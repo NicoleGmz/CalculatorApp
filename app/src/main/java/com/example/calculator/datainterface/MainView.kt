@@ -8,4 +8,7 @@ interface MainView {
     fun showError(error: String)
     fun displayResult(result: Double)
     fun updateHistory(historyResult: String, newOperation: String)
+    fun displayHistory()
+    fun hideHistory()
+    fun updateData()
 }
