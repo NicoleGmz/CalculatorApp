@@ -123,12 +123,16 @@ class MainRepository {
     }
 
     private fun getPreference(s: String): Int{
-        return if(s == "*" || s == "/"){
-            3
-        } else if (s == "+" || s == "-"){
-            2
-        }else{
-            -1
+        return when (s) {
+            "*", "/" -> {
+                3
+            }
+            "+", "-" -> {
+                2
+            }
+            else -> {
+                -1
+            }
         }
     }
 
@@ -148,14 +152,15 @@ class MainRepository {
         return OperationResult(result, true, "")
     }
 
-    private fun doOperation(firstNumber: String, secondNumber: String, operator: String): String{
+    private fun doOperation(secondNumber: String, firstNumber: String, operator: String): String{
         var result = 0.0
         when(operator){
             "+" -> result = addNumbers(firstNumber, secondNumber)
             "-" -> result = subtractNumbers(firstNumber, secondNumber)
             "*" -> result = multiplyNumbers(firstNumber, secondNumber)
-            "/" -> result = divideNumbers(secondNumber, firstNumber)
+            "/" -> result = divideNumbers(firstNumber, secondNumber)
         }
+
         return result.toString()
     }
 
