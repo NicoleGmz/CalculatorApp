@@ -1,6 +1,6 @@
 # CalculatorApp
 
-An Android app, that displaya basic Calculator. Build completly in Kotlin.
+An Android app, that displays a basic Calculator. Build completely in Kotlin.
 What I learned during this project:
 * MVP architecture
 * RecyclerView
